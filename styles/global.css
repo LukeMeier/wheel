@@ -3,7 +3,10 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: white;
-  background: linear-gradient(135deg, #130b3d, #2d2470, #14001f);
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 35%),
+    linear-gradient(135deg, #1b1550, #24145f, #12091f);
+  overflow-x: hidden;
 }
 
 .container {
@@ -27,8 +30,8 @@ body {
   width: min(280px, 80vw);
   padding: 15px 20px;
   border-radius: 18px;
-  border: 2px solid white;
-  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.12);
   color: white;
   font-size: 20px;
   text-align: center;
@@ -60,16 +63,17 @@ body {
   font-size: clamp(42px, 10vw, 72px);
   color: white;
   z-index: 30;
-  text-shadow: 0 0 18px #ff00cc;
+  text-shadow: 0 0 14px rgba(255,255,255,0.8);
 }
 
 .wheelLights {
   position: absolute;
-  inset: -12px;
+  inset: -10px;
   border-radius: 50%;
   background: conic-gradient(#ff00cc, #ffcc00, #00ffee, #ff00cc);
-  filter: blur(12px);
-  animation: rotateLights 3s linear infinite;
+  filter: blur(10px);
+  opacity: 0.75;
+  animation: rotateLights 4s linear infinite;
 }
 
 .wheel {
@@ -80,7 +84,9 @@ body {
   overflow: hidden;
   border: 7px solid white;
   transition: transform 5s cubic-bezier(.12,.82,.22,1);
-  box-shadow: 0 0 45px rgba(255,0,204,0.8);
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.35),
+    0 0 45px rgba(255,0,204,0.45);
 
   background: conic-gradient(
     #3367e8 0deg 30deg,
@@ -149,7 +155,7 @@ body {
   color: white;
   cursor: pointer;
   background: linear-gradient(45deg, #ff00cc, #ff9900, #ffcc00);
-  box-shadow: 0 0 35px #ff00cc;
+  box-shadow: 0 0 30px rgba(255,0,204,0.6);
 }
 
 .spinButton:disabled {
@@ -165,9 +171,37 @@ body {
   font-size: clamp(1.4rem, 6vw, 2.2rem);
   font-weight: bold;
   background: rgba(255,255,255,0.12);
-  box-shadow: 0 0 30px #ff00cc;
+  box-shadow: 0 0 25px rgba(255,0,204,0.55);
+}
+
+.statusBox {
+  margin-top: 45px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.free,
+.taken {
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.free {
+  background: rgba(0,255,120,0.18);
+}
+
+.taken {
+  background: rgba(255,0,80,0.22);
+  text-decoration: line-through;
 }
 
 @keyframes rotateLights {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
