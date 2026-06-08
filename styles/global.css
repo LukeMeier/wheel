@@ -1,22 +1,39 @@
+html,
 body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
   font-family: Arial, sans-serif;
   color: white;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 35%),
-    linear-gradient(135deg, #1b1550, #24145f, #12091f);
   overflow-x: hidden;
+  background: #171044;
+}
+
+body {
+  background:
+    radial-gradient(circle at top center, rgba(255,0,204,0.18), transparent 32rem),
+    linear-gradient(180deg, #1c1454 0%, #140d3a 55%, #0d0827 100%);
+}
+
+#__next {
+  min-height: 100dvh;
 }
 
 .container {
+  min-height: 100dvh;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
-  padding: 18px;
+  padding: 18px 14px 60px;
+  background:
+    radial-gradient(circle at center 42%, rgba(255,255,255,0.06), transparent 28rem);
 }
 
 .title {
-  font-size: clamp(2rem, 6vw, 3.3rem);
-  margin: 5px 0;
+  font-size: clamp(2rem, 8vw, 3.3rem);
+  margin: 5px auto 4px;
+  max-width: 95vw;
   text-shadow: 0 0 18px #ff00cc;
 }
 
@@ -27,11 +44,12 @@ body {
 }
 
 .nameInput {
-  width: min(280px, 80vw);
+  width: min(420px, 82vw);
+  box-sizing: border-box;
   padding: 15px 20px;
   border-radius: 18px;
   border: 2px solid rgba(255,255,255,0.8);
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.14);
   color: white;
   font-size: 20px;
   text-align: center;
@@ -50,17 +68,17 @@ body {
 
 .wheelWrap {
   position: relative;
-  width: min(600px, 88vw);
-  height: min(600px, 88vw);
+  width: min(600px, 86vw);
+  height: min(600px, 86vw);
   margin: 0 auto;
 }
 
 .pointer {
   position: absolute;
-  right: -6%;
+  right: -5.5%;
   top: 50%;
   transform: translateY(-50%);
-  font-size: clamp(42px, 10vw, 72px);
+  font-size: clamp(38px, 9vw, 72px);
   color: white;
   z-index: 30;
   text-shadow: 0 0 14px rgba(255,255,255,0.8);
@@ -72,7 +90,7 @@ body {
   border-radius: 50%;
   background: conic-gradient(#ff00cc, #ffcc00, #00ffee, #ff00cc);
   filter: blur(10px);
-  opacity: 0.75;
+  opacity: 0.72;
   animation: rotateLights 4s linear infinite;
 }
 
@@ -83,6 +101,7 @@ body {
   border-radius: 50%;
   overflow: hidden;
   border: 7px solid white;
+  box-sizing: border-box;
   transition: transform 5s cubic-bezier(.12,.82,.22,1);
   box-shadow:
     0 0 25px rgba(255,255,255,0.35),
@@ -112,6 +131,7 @@ body {
   background: radial-gradient(circle, #fff, #ddd);
   border-radius: 50%;
   border: 6px solid #555;
+  box-sizing: border-box;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -174,30 +194,25 @@ body {
   box-shadow: 0 0 25px rgba(255,0,204,0.55);
 }
 
-.statusBox {
-  margin-top: 45px;
-}
+@media (max-width: 600px) {
+  .container {
+    padding-top: 22px;
+    padding-bottom: 80px;
+  }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
+  .wheelWrap {
+    width: 82vw;
+    height: 82vw;
+  }
 
-.free,
-.taken {
-  padding: 12px;
-  border-radius: 14px;
-}
+  .wheelSvg text {
+    font-size: 31px;
+  }
 
-.free {
-  background: rgba(0,255,120,0.18);
-}
-
-.taken {
-  background: rgba(255,0,80,0.22);
-  text-decoration: line-through;
+  .spinButton {
+    margin-top: 34px;
+    padding: 16px 34px;
+  }
 }
 
 @keyframes rotateLights {
