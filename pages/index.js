@@ -88,18 +88,16 @@ export default function Home() {
 
   return (
     <main className="container">
-      <h1 className="title">🎡 MEGA GLÜCKSRAD 2026 🎉</h1>
-      <div className="subtitle">✨ Dreh dein Schicksal ✨</div>
+      <h1 className="title">🎡 12 Monate Lieblingszeit 🎉</h1>
+      <div className="subtitle">✨ Dreh dein/eurern Monat für unsern Glitzermoment ✨</div>
 
       <input
         className="nameInput"
-        placeholder="Dein Name..."
+        placeholder="Name ..."
         value={playerName}
         disabled={played || spinning}
         onChange={e => setPlayerName(e.target.value)}
       />
-
-      <div className="counter">🎯 Noch verfügbar: {available}</div>
 
       <div className="wheelWrap">
         <div className="pointer">◀</div>
@@ -131,10 +129,10 @@ export default function Home() {
       </div>
 
       <button className="spinButton" onClick={spin} disabled={spinning || played}>
-        {spinning ? "🎡 DREHT..." : played ? "🔒 Schon gedreht" : "🚀 JETZT DREHEN"}
+        {spinning ? "🎡 DREHT..." : played ? "🔒 Schon gedreht" : "JETZT DREHEN"}
       </button>
 
-      {result && <div className="result">🔥 {playerName}, DU HAST {result.toUpperCase()} 🔥</div>}
+      {result && <div className="result">🔥 {playerName}, Unser Monat: {result.toUpperCase()} 🔥</div>}
     </main>
   );
 }

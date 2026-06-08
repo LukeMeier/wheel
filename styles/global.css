@@ -108,18 +108,18 @@ body {
     0 0 45px rgba(255,0,204,0.45);
 
   background: conic-gradient(
-    #3367e8 0deg 30deg,
-    #ff002b 30deg 60deg,
-    #f4b400 60deg 90deg,
-    #00a12b 90deg 120deg,
-    #3367e8 120deg 150deg,
-    #ff002b 150deg 180deg,
-    #f4b400 180deg 210deg,
-    #00a12b 210deg 240deg,
-    #3367e8 240deg 270deg,
-    #ff002b 270deg 300deg,
-    #f4b400 300deg 330deg,
-    #00a12b 330deg 360deg
+    #c59d53 0deg 30deg,
+    #cc4c90 30deg 60deg,
+    #d9a0bf 60deg 90deg,
+    #d6cece 90deg 120deg,
+    #c59d53 120deg 150deg,
+    #cc4c90 150deg 180deg,
+    #d9a0bf 180deg 210deg,
+    #d6cece 210deg 240deg,
+    #c59d53 240deg 270deg,
+    #cc4c90 270deg 300deg,
+    #d9a0bf 300deg 330deg,
+    #d6cece 330deg 360deg
   );
 }
 
