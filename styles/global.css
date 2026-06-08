@@ -254,8 +254,27 @@ body {
   }
 
   .wheelText {
-    width: 110px;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+
+  width: clamp(90px, 24vw, 170px);
+  text-align: center;
+
+  font-size: clamp(14px, 4vw, 33px);
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--angle))
+    translateX(clamp(105px, 29vw, 205px));
+
+  transform-origin: center;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.55);
+}
 
   .spinButton {
     padding: 16px 28px;

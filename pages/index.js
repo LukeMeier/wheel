@@ -12,7 +12,6 @@ export default function Home() {
   const [status, setStatus] = useState([]);
   const [spinning, setSpinning] = useState(false);
   const [played, setPlayed] = useState(false);
-  const [playerName, setPlayerName] = useState("");
 
   const spinSound = useRef(null);
   const winSound = useRef(null);
@@ -20,7 +19,6 @@ export default function Home() {
   useEffect(() => {
     spinSound.current = new Audio("/spin.mp3");
     winSound.current = new Audio("/win.mp3");
-
     setPlayed(document.cookie.includes("played=true"));
     loadStatus();
   }, []);
@@ -34,11 +32,6 @@ export default function Home() {
   const spin = async () => {
     if (spinning) return;
 
-    if (!playerName.trim()) {
-      alert("Bitte gib zuerst deinen Namen ein 😄");
-      return;
-    }
-
     if (document.cookie.includes("played=true")) {
       alert("Du hast bereits gedreht 😄");
       setPlayed(true);
@@ -50,12 +43,8 @@ export default function Home() {
 
     const res = await fetch("/api/spin", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        playerName: playerName
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ playerName: "Gast" })
     });
 
     const data = await res.json();
@@ -86,9 +75,6 @@ export default function Home() {
       winSound.current.play().catch(() => {});
 
       confetti({ particleCount: 500, spread: 170, origin: { y: 0.6 } });
-      setTimeout(() => {
-        confetti({ particleCount: 250, spread: 100, origin: { y: 0.35 } });
-      }, 350);
     }, 5200);
   };
 
@@ -101,23 +87,7 @@ export default function Home() {
 
       <h1 className="title">🎡 MEGA GLÜCKSRAD 2026 🎉</h1>
       <div className="subtitle">✨ Dreh dein Schicksal ✨</div>
-
-      <div className="nameBox">
-        <input
-          className="nameInput"
-          type="text"
-          placeholder="Dein Name..."
-          value={playerName}
-          disabled={played || spinning}
-          onChange={e => setPlayerName(e.target.value)}
-        />
-      </div>
-
       <div className="counter">🎯 Noch verfügbar: {available}</div>
-
-      {played && !result && (
-        <div className="playedHint">🔒 Dieses Gerät hat bereits gedreht</div>
-      )}
 
       <div className="wheelWrap">
         <div className="pointer">◀</div>
@@ -132,11 +102,7 @@ export default function Home() {
                 key={month}
                 className="wheelText"
                 style={{
-                  transform: `
-                    translate(-50%, -50%)
-                    rotate(${angle}deg)
-                    translateX(205px)
-                  `
+                  "--angle": `${angle}deg`
                 }}
               >
                 {month}
@@ -150,11 +116,7 @@ export default function Home() {
         {spinning ? "🎡 DREHT..." : played ? "🔒 Schon gedreht" : "🚀 JETZT DREHEN"}
       </button>
 
-      {result && (
-        <div className="result">
-          🔥 {playerName}, DU HAST {result.toUpperCase()} 🔥
-        </div>
-      )}
+      {result && <div className="result">🔥 DU HAST {result.toUpperCase()} 🔥</div>}
     </main>
   );
 }
