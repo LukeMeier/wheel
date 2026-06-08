@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <main className="container">
       <h1 className="title">🎡 12 Monate Lieblingszeit 🎉</h1>
-      <div className="subtitle">✨ Dreh deinen/eureren Monat für unseren Glitzermoment ✨</div>
+      <div className="subtitle">✨ Dreh deinen/euren Monat für unseren Glitzermoment ✨</div>
 
       <input
         className="nameInput"
