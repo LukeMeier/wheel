@@ -1,18 +1,13 @@
 [
   {
     "name": "Januar",
-    "remaining": 0,
-    "players": [
-      "hey",
-      "dadadad"
-    ]
+    "remaining": 1,
+    "players": []
   },
   {
     "name": "Februar",
     "remaining": 1,
-    "players": [
-      "dadad"
-    ]
+    "players": []
   },
   {
     "name": "März",
@@ -21,48 +16,33 @@
   },
   {
     "name": "April",
-    "remaining": 1,
-    "players": [
-      "dadafa"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "Mai",
-    "remaining": 1,
-    "players": [
-      "dadad"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "Juni",
-    "remaining": 1,
-    "players": [
-      "Luke"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "Juli",
-    "remaining": 0,
-    "players": [
-      "Luke",
-      "Luke"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "August",
-    "remaining": 0,
-    "players": [
-      "afafafs",
-      "dadad"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "September",
-    "remaining": 0,
-    "players": [
-      "Henry",
-      "dadad"
-    ]
+    "remaining": 1,
+    "players": []
   },
   {
     "name": "Oktober",
@@ -71,16 +51,12 @@
   },
   {
     "name": "November",
-    "remaining": 1,
-    "players": [
-      "Luke"
-    ]
+    "remaining": 2,
+    "players": []
   },
   {
     "name": "Dezember",
     "remaining": 1,
-    "players": [
-      "adada"
-    ]
+    "players": []
   }
 ]
