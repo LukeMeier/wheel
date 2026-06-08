@@ -1,0 +1,69 @@
+[
+  {
+    "name": "Januar",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "Februar",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "März",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "April",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "Mai",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "Juni",
+    "remaining": 1,
+    "players": [
+      "Luke"
+    ]
+  },
+  {
+    "name": "Juli",
+    "remaining": 0,
+    "players": [
+      "Luke",
+      "Luke"
+    ]
+  },
+  {
+    "name": "August",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "September",
+    "remaining": 1,
+    "players": [
+      "Henry"
+    ]
+  },
+  {
+    "name": "Oktober",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "November",
+    "remaining": 2,
+    "players": []
+  },
+  {
+    "name": "Dezember",
+    "remaining": 2,
+    "players": []
+  }
+]

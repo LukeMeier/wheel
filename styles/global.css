@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 10%, #ff00cc55, transparent 25%),
+    radial-gradient(circle at 80% 20%, #00ccff55, transparent 25%),
+    linear-gradient(135deg, #130b3d, #2d2470, #14001f);
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.glow {
+  position: fixed;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  z-index: -1;
+  animation: floatGlow 8s infinite alternate ease-in-out;
+}
+
+.glowOne {
+  background: #ff00cc;
+  left: -120px;
+  top: 120px;
+}
+
+.glowTwo {
+  background: #00d9ff;
+  right: -120px;
+  bottom: 80px;
+}
+
+.title {
+  font-size: 3.3rem;
+  margin: 5px 0;
+  text-shadow: 0 0 15px #ff00cc, 0 0 35px #ff00cc;
+  animation: pulseTitle 1.8s infinite alternate;
+}
+
+.subtitle {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffcc00;
+  text-shadow: 0 0 15px #ffcc00;
+}
+
+.counter {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.playedHint {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 20px rgba(255,255,255,0.18);
+}
+
+.wheelWrap {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.pointer {
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 72px;
+  color: #f4f4f4;
+  z-index: 30;
+  text-shadow: 0 0 14px #fff, 0 0 20px #ff00cc;
+}
+
+.wheelLights {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: conic-gradient(#ff00cc, #ffcc00, #00ffee, #ff00cc);
+  filter: blur(10px);
+  animation: rotateLights 3s linear infinite;
+}
+
+.wheel {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 7px solid #eee;
+  transition: transform 5s cubic-bezier(.12,.82,.22,1);
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.45),
+    0 0 70px rgba(255,0,204,0.65);
+
+  background: conic-gradient(
+    #3367e8 0deg 30deg,
+    #ff002b 30deg 60deg,
+    #f4b400 60deg 90deg,
+    #00a12b 90deg 120deg,
+    #3367e8 120deg 150deg,
+    #ff002b 150deg 180deg,
+    #f4b400 180deg 210deg,
+    #00a12b 210deg 240deg,
+    #3367e8 240deg 270deg,
+    #ff002b 270deg 300deg,
+    #f4b400 300deg 330deg,
+    #00a12b 330deg 360deg
+  );
+}
+
+.wheel::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #fff, #ddd);
+  border-radius: 50%;
+  border: 6px solid #555;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.wheel::after {
+  content: "🎉";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 62px;
+  z-index: 11;
+}
+
+.wheelText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  width: 170px;
+  text-align: center;
+  font-size: 33px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  transform-origin: center;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.55);
+}
+
+.spinButton {
+  margin-top: 35px;
+  padding: 20px 46px;
+  border: none;
+  border-radius: 22px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(45deg, #ff00cc, #ff9900, #ffcc00);
+  box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff9900;
+  transition: 0.25s;
+}
+
+.spinButton:hover {
+  transform: scale(1.08) rotate(-1deg);
+}
+
+.spinButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.result {
+  margin: 30px auto 0;
+  width: fit-content;
+  padding: 18px 30px;
+  border-radius: 22px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 30px #ff00cc;
+  animation: pop 0.45s ease;
+}
+
+@keyframes rotateLights {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseTitle {
+  from { transform: scale(1); }
+  to { transform: scale(1.035); }
+}
+
+@keyframes floatGlow {
+  from { transform: translateY(0); }
+  to { transform: translateY(-40px); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.nameBox {
+  margin: 18px auto;
+}
+
+.nameInput {
+  width: 280px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.6);
+  outline: none;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 0 25px rgba(255,0,204,0.35);
+}
+
+.nameInput::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+
+.nameInput:disabled {
+  opacity: 0.55;
+}
