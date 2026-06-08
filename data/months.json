@@ -1,8 +1,10 @@
 [
   {
     "name": "Januar",
-    "remaining": 2,
-    "players": []
+    "remaining": 1,
+    "players": [
+      "hey"
+    ]
   },
   {
     "name": "Februar",
@@ -16,8 +18,10 @@
   },
   {
     "name": "April",
-    "remaining": 2,
-    "players": []
+    "remaining": 1,
+    "players": [
+      "dadafa"
+    ]
   },
   {
     "name": "Mai",
@@ -41,8 +45,10 @@
   },
   {
     "name": "August",
-    "remaining": 2,
-    "players": []
+    "remaining": 1,
+    "players": [
+      "afafafs"
+    ]
   },
   {
     "name": "September",

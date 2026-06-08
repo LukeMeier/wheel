@@ -14,8 +14,16 @@ export default function handler(req, res) {
     });
   }
 
-  const filePath = path.join(process.cwd(), "data", "months.json");
-  const months = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const monthsPath = path.join(process.cwd(), "data", "months.json");
+  const lastPath = path.join(process.cwd(), "data", "last.json");
+
+  const months = JSON.parse(fs.readFileSync(monthsPath, "utf8"));
+
+  let lastData = { lastMonth: null };
+
+  if (fs.existsSync(lastPath)) {
+    lastData = JSON.parse(fs.readFileSync(lastPath, "utf8"));
+  }
 
   const availableMonths = months.filter(month => month.remaining > 0);
 
@@ -25,15 +33,28 @@ export default function handler(req, res) {
     });
   }
 
+  let possibleMonths = availableMonths.filter(
+    month => month.name !== lastData.lastMonth
+  );
+
+  if (possibleMonths.length === 0) {
+    possibleMonths = availableMonths;
+  }
+
   const selected =
-    availableMonths[Math.floor(Math.random() * availableMonths.length)];
+    possibleMonths[Math.floor(Math.random() * possibleMonths.length)];
 
   const index = months.findIndex(m => m.name === selected.name);
 
   months[index].remaining -= 1;
   months[index].players.push(playerName.trim());
 
-  fs.writeFileSync(filePath, JSON.stringify(months, null, 2));
+  fs.writeFileSync(monthsPath, JSON.stringify(months, null, 2));
+
+  fs.writeFileSync(
+    lastPath,
+    JSON.stringify({ lastMonth: selected.name }, null, 2)
+  );
 
   res.status(200).json({
     result: selected.name
