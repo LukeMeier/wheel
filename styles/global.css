@@ -3,72 +3,37 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: white;
-  overflow-x: hidden;
-  background:
-    radial-gradient(circle at 20% 10%, #ff00cc55, transparent 25%),
-    radial-gradient(circle at 80% 20%, #00ccff55, transparent 25%),
-    linear-gradient(135deg, #130b3d, #2d2470, #14001f);
+  background: linear-gradient(135deg, #130b3d, #2d2470, #14001f);
 }
 
 .container {
-  position: relative;
   text-align: center;
-  padding: 20px;
-  overflow: hidden;
-}
-
-.glow {
-  position: fixed;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.55;
-  z-index: -1;
-  animation: floatGlow 8s infinite alternate ease-in-out;
-}
-
-.glowOne {
-  background: #ff00cc;
-  left: -120px;
-  top: 120px;
-}
-
-.glowTwo {
-  background: #00d9ff;
-  right: -120px;
-  bottom: 80px;
+  padding: 18px;
 }
 
 .title {
   font-size: clamp(2rem, 6vw, 3.3rem);
   margin: 5px 0;
-  text-shadow: 0 0 15px #ff00cc, 0 0 35px #ff00cc;
-  animation: pulseTitle 1.8s infinite alternate;
+  text-shadow: 0 0 18px #ff00cc;
 }
 
 .subtitle {
   font-size: clamp(16px, 4vw, 22px);
-  margin-bottom: 10px;
   color: #ffcc00;
-  text-shadow: 0 0 15px #ffcc00;
-}
-
-.nameBox {
-  margin: 18px auto;
+  margin-bottom: 14px;
 }
 
 .nameInput {
   width: min(280px, 80vw);
-  padding: 16px 20px;
+  padding: 15px 20px;
   border-radius: 18px;
-  border: 2px solid rgba(255,255,255,0.6);
-  outline: none;
+  border: 2px solid white;
+  background: rgba(255,255,255,0.15);
+  color: white;
   font-size: 20px;
   text-align: center;
-  color: white;
-  background: rgba(255,255,255,0.14);
-  box-shadow: 0 0 25px rgba(255,0,204,0.35);
+  outline: none;
+  margin-bottom: 14px;
 }
 
 .nameInput::placeholder {
@@ -77,21 +42,13 @@ body {
 
 .counter {
   font-size: clamp(18px, 4vw, 25px);
-  margin-bottom: 12px;
-}
-
-.playedHint {
-  display: inline-block;
-  margin-bottom: 15px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
+  margin-bottom: 16px;
 }
 
 .wheelWrap {
   position: relative;
-  width: min(600px, 86vw);
-  height: min(600px, 86vw);
+  width: min(600px, 88vw);
+  height: min(600px, 88vw);
   margin: 0 auto;
 }
 
@@ -101,17 +58,17 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: clamp(42px, 10vw, 72px);
-  color: #f4f4f4;
+  color: white;
   z-index: 30;
-  text-shadow: 0 0 14px #fff, 0 0 20px #ff00cc;
+  text-shadow: 0 0 18px #ff00cc;
 }
 
 .wheelLights {
   position: absolute;
-  inset: -14px;
+  inset: -12px;
   border-radius: 50%;
   background: conic-gradient(#ff00cc, #ffcc00, #00ffee, #ff00cc);
-  filter: blur(10px);
+  filter: blur(12px);
   animation: rotateLights 3s linear infinite;
 }
 
@@ -121,11 +78,9 @@ body {
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  border: clamp(4px, 1vw, 7px) solid #eee;
+  border: 7px solid white;
   transition: transform 5s cubic-bezier(.12,.82,.22,1);
-  box-shadow:
-    0 0 30px rgba(255,255,255,0.45),
-    0 0 70px rgba(255,0,204,0.65);
+  box-shadow: 0 0 45px rgba(255,0,204,0.8);
 
   background: conic-gradient(
     #3367e8 0deg 30deg,
@@ -150,7 +105,7 @@ body {
   height: 37%;
   background: radial-gradient(circle, #fff, #ddd);
   border-radius: 50%;
-  border: clamp(4px, 1vw, 6px) solid #555;
+  border: 6px solid #555;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -167,37 +122,34 @@ body {
   z-index: 11;
 }
 
-.wheelText {
+.wheelSvg {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 5;
-  width: 170px;
-  text-align: center;
-  font-size: clamp(17px, 4.7vw, 33px);
+}
+
+.wheelSvg text {
+  fill: white;
+  font-size: 32px;
   font-weight: 500;
-  color: white;
-  white-space: nowrap;
-  transform-origin: center;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.55);
+  paint-order: stroke;
+  stroke: rgba(0,0,0,0.45);
+  stroke-width: 3px;
 }
 
 .spinButton {
-  margin-top: 35px;
-  padding: 20px 46px;
+  margin-top: 32px;
+  padding: 18px 42px;
   border: none;
   border-radius: 22px;
   font-size: clamp(18px, 4vw, 25px);
   font-weight: bold;
-  cursor: pointer;
   color: white;
+  cursor: pointer;
   background: linear-gradient(45deg, #ff00cc, #ff9900, #ffcc00);
-  box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff9900;
-  transition: 0.25s;
-}
-
-.spinButton:hover {
-  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 0 35px #ff00cc;
 }
 
 .spinButton:disabled {
@@ -214,88 +166,8 @@ body {
   font-weight: bold;
   background: rgba(255,255,255,0.12);
   box-shadow: 0 0 30px #ff00cc;
-  animation: pop 0.45s ease;
-}
-
-.statusBox {
-  margin-top: 45px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.free,
-.taken {
-  padding: 12px;
-  border-radius: 14px;
-}
-
-.free {
-  background: rgba(0,255,120,0.18);
-}
-
-.taken {
-  background: rgba(255,0,80,0.22);
-  text-decoration: line-through;
-}
-
-@media (max-width: 700px) {
-  .container {
-    padding: 14px;
-  }
-
-  .wheelWrap {
-    width: 88vw;
-    height: 88vw;
-  }
-
-  .wheelText {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 5;
-
-  width: clamp(90px, 24vw, 170px);
-  text-align: center;
-
-  font-size: clamp(14px, 4vw, 33px);
-  font-weight: 500;
-  color: white;
-  white-space: nowrap;
-
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--angle))
-    translateX(clamp(105px, 29vw, 205px));
-
-  transform-origin: center;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.55);
-}
-
-  .spinButton {
-    padding: 16px 28px;
-  }
 }
 
 @keyframes rotateLights {
   to { transform: rotate(360deg); }
-}
-
-@keyframes pulseTitle {
-  from { transform: scale(1); }
-  to { transform: scale(1.035); }
-}
-
-@keyframes floatGlow {
-  from { transform: translateY(0); }
-  to { transform: translateY(-40px); }
-}
-
-@keyframes pop {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }

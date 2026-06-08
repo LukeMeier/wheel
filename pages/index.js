@@ -12,6 +12,7 @@ export default function Home() {
   const [status, setStatus] = useState([]);
   const [spinning, setSpinning] = useState(false);
   const [played, setPlayed] = useState(false);
+  const [playerName, setPlayerName] = useState("");
 
   const spinSound = useRef(null);
   const winSound = useRef(null);
@@ -32,6 +33,11 @@ export default function Home() {
   const spin = async () => {
     if (spinning) return;
 
+    if (!playerName.trim()) {
+      alert("Bitte gib zuerst deinen Namen ein 😄");
+      return;
+    }
+
     if (document.cookie.includes("played=true")) {
       alert("Du hast bereits gedreht 😄");
       setPlayed(true);
@@ -44,7 +50,7 @@ export default function Home() {
     const res = await fetch("/api/spin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ playerName: "Gast" })
+      body: JSON.stringify({ playerName })
     });
 
     const data = await res.json();
@@ -82,11 +88,17 @@ export default function Home() {
 
   return (
     <main className="container">
-      <div className="glow glowOne"></div>
-      <div className="glow glowTwo"></div>
-
       <h1 className="title">🎡 MEGA GLÜCKSRAD 2026 🎉</h1>
       <div className="subtitle">✨ Dreh dein Schicksal ✨</div>
+
+      <input
+        className="nameInput"
+        placeholder="Dein Name..."
+        value={playerName}
+        disabled={played || spinning}
+        onChange={e => setPlayerName(e.target.value)}
+      />
+
       <div className="counter">🎯 Noch verfügbar: {available}</div>
 
       <div className="wheelWrap">
@@ -94,21 +106,27 @@ export default function Home() {
         <div className="wheelLights"></div>
 
         <div className="wheel" style={{ transform: `rotate(${rotation}deg)` }}>
-          {months.map((month, i) => {
-            const angle = i * 30 + 15;
+          <svg className="wheelSvg" viewBox="0 0 600 600">
+            {months.map((month, i) => {
+              const angle = i * 30 + 15;
+              const rad = angle * Math.PI / 180;
+              const x = 300 + Math.cos(rad) * 205;
+              const y = 300 + Math.sin(rad) * 205;
 
-            return (
-              <div
-                key={month}
-                className="wheelText"
-                style={{
-                  "--angle": `${angle}deg`
-                }}
-              >
-                {month}
-              </div>
-            );
-          })}
+              return (
+                <text
+                  key={month}
+                  x={x}
+                  y={y}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  transform={`rotate(${angle} ${x} ${y})`}
+                >
+                  {month}
+                </text>
+              );
+            })}
+          </svg>
         </div>
       </div>
 
@@ -116,7 +134,7 @@ export default function Home() {
         {spinning ? "🎡 DREHT..." : played ? "🔒 Schon gedreht" : "🚀 JETZT DREHEN"}
       </button>
 
-      {result && <div className="result">🔥 DU HAST {result.toUpperCase()} 🔥</div>}
+      {result && <div className="result">🔥 {playerName}, DU HAST {result.toUpperCase()} 🔥</div>}
     </main>
   );
 }
