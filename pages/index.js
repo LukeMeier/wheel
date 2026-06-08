@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <main className="container">
       <h1 className="title">🎡 12 Monate Lieblingszeit 🎉</h1>
-      <div className="subtitle">✨ Dreh dein/eurern Monat für unsern Glitzermoment ✨</div>
+      <div className="subtitle">✨ Dreh deinen/eureren Monat für unseren Glitzermoment ✨</div>
 
       <input
         className="nameInput"
@@ -132,7 +132,7 @@ export default function Home() {
         {spinning ? "🎡 DREHT..." : played ? "🔒 Schon gedreht" : "JETZT DREHEN"}
       </button>
 
-      {result && <div className="result">🔥 {playerName}, Unser Monat: {result.toUpperCase()} 🔥</div>}
+      {result && <div className="result">🔥 {playerName}, unser Monat ist {result.toUpperCase()} 🔥</div>}
     </main>
   );
 }
