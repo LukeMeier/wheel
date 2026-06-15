@@ -56,7 +56,9 @@
   },
   {
     "name": "Dezember",
-    "remaining": 1,
-    "players": []
+    "remaining": 0,
+    "players": [
+      "Corinne"
+    ]
   }
 ]
